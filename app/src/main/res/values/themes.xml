@@ -1,0 +1,29 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Yiyo" parent="Theme.MaterialComponents">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/anaRenkBeyaz</item>
+        <item name="colorPrimaryVariant">@color/anaRenkGri</item>
+        <item name="colorOnPrimary">@color/anaRenkBeyaz</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/anaRenkBeyaz</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+
+    </style>
+    <style name="toolbar">
+        <item name="android:fontFamily">@font/gluten</item>
+        <item name="android:textColor">@color/anaRenkSari</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+    <style name="imageview">
+        <item name="android:bottomLeftRadius">20dp</item>
+        <item name="android:topRightRadius">20dp</item>
+    </style>
+</resources>
