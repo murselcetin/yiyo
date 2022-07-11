@@ -5,11 +5,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yiyo.R
 import com.example.yiyo.data.entity.Yemekler
 import com.example.yiyo.databinding.YemekRecyclerviewBinding
+import com.example.yiyo.ui.fragment.AnasayfaFragmentDirections
 import com.example.yiyo.ui.viewmodel.AnasayfaFragmentViewModel
+import com.example.yiyo.util.gecisYap
 
 
 class YemeklerAdapter(
@@ -37,6 +40,11 @@ class YemeklerAdapter(
         val yemek = yemeklerListesi[position]
         val t = holder.binding
         t.yemek = yemek
+
+        t.cardViewYemek.setOnClickListener() {
+            val gecis = AnasayfaFragmentDirections.anasayfaToYemekDetay(yemek = yemek)
+            Navigation.gecisYap(it, gecis)
+        }
     }
 
     override fun getItemCount(): Int {

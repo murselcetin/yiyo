@@ -8,12 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.yiyo.R
 import com.example.yiyo.data.entity.Yemekler
 import com.example.yiyo.databinding.FragmentAnasayfaBinding
 import com.example.yiyo.ui.adapter.YemeklerAdapter
 import com.example.yiyo.ui.viewmodel.AnasayfaFragmentViewModel
+import com.example.yiyo.util.gecisYap
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

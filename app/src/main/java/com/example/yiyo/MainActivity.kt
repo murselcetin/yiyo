@@ -2,9 +2,12 @@ package com.example.yiyo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.yiyo.databinding.ActivityMainBinding
+import com.example.yiyo.util.gecisYap
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,8 +23,5 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.bottomNavBar, navHostFragment.navController)
         binding.bottomNavBar.background = null
         binding.bottomNavBar.menu.getItem(1).isEnabled = false
-
-        binding.fab.setOnClickListener{
-        }
     }
 }
