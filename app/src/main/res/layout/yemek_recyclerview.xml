@@ -19,18 +19,20 @@
             android:id="@+id/cardViewYemek"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="15dp">
+            android:layout_margin="5dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="20dp"
+            android:background="@color/anaRenkGri">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/anaRenkBeyaz">
+                android:background="@color/anaRenkGri2">
 
                 <ImageView
                     android:id="@+id/imageViewYemekResim"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_margin="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +46,7 @@
                     android:text="@{Yemek.yemek_adi}"
                     android:textColor="@color/anaRenkSari"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/kdam"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageViewYemekResim" />
@@ -53,11 +55,11 @@
                     android:id="@+id/textViewYemekFiyat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="16dp"
                     android:text='@{Yemek.yemek_fiyat+".00 ₺"}'
-                    android:textColor="@color/anaRenkGri"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/anaRenkBeyaz"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/kdam"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />

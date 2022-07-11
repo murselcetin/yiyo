@@ -31,14 +31,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:titleTextAppearance="@style/toolbar"
             app:titleTextColor="@color/anaRenkSari"
-            app:titleMarginStart="175dp"></androidx.appcompat.widget.Toolbar>
+            app:titleMarginStart="172.8dp"></androidx.appcompat.widget.Toolbar>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:adapter="@{yemeklerAdapter}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbarAnasayfa"
