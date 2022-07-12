@@ -172,6 +172,9 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="45dp">
             <Button
+                android:id="@+id/eksiButton"
+                android:clickable="true"
+                android:onClick="@{()-> yemekDetayFragment.yemekAdetEksi()}"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:backgroundTint="@color/anaRenkGri"
@@ -179,6 +182,7 @@
                 android:textSize="15sp"
                 android:textColor="@color/anaRenkSari"/>
             <TextView
+                android:id="@+id/yemekSiparisAdet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
@@ -187,6 +191,9 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginStart="15dp"/>
             <Button
+                android:id="@+id/artiButton"
+                android:clickable="true"
+                android:onClick="@{()-> yemekDetayFragment.yemekAdetArti()}"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:backgroundTint="@color/anaRenkGri"
@@ -201,6 +208,7 @@
             android:backgroundTint="@color/anaRenkSari"
             android:text="SEPETE EKLE"
             android:textColor="@color/anaRenkGri"
+            android:onClick="@{()-> yemekDetayFragment.sepeteEkle(gelenYemek.yemek_adi,gelenYemek.yemek_resim_adi,gelenYemek.yemek_fiyat,Integer.parseInt(yemekSiparisAdet.getText().toString()))}"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginBottom="40dp"
             android:layout_marginTop="20dp"
