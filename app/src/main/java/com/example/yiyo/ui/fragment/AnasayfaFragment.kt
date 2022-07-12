@@ -53,11 +53,6 @@ class AnasayfaFragment : Fragment(), SearchView.OnQueryTextListener {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.yemeklerYukle()
-    }
-
     override fun onQueryTextSubmit(query: String?): Boolean {
         return true
     }

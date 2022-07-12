@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:titleTextAppearance="@style/toolbar"
             app:titleTextColor="@color/anaRenkSari"
-            app:titleMarginStart="172.8dp"></androidx.appcompat.widget.Toolbar>
+            app:titleMarginStart="172.8dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
