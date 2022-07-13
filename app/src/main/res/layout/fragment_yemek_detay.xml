@@ -16,55 +16,36 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/anaRenkBeyaz"
         tools:context=".ui.fragment.YemekDetayFragment">
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/anaRenkGri"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gluten"
-                android:textColor="@color/anaRenkSari"
-                android:layout_gravity="center"
-                android:text="YİYO"
-                android:textSize="28sp"/>
-        </androidx.appcompat.widget.Toolbar>
-
         <androidx.cardview.widget.CardView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
             android:layout_margin="15dp"
-            android:background="@color/anaRenkGri"
+            android:backgroundTint="@color/anaRenkGri"
             app:cardCornerRadius="7dp"
-            app:cardElevation="3dp">
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/favori_bos"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/favori_bos" />
         </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/imageViewYemek"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:src="@drawable/kofte"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageViewYildiz"
@@ -75,7 +56,9 @@
             android:src="@drawable/yildiz_icon"
             app:layout_constraintEnd_toStartOf="@id/textViewYemekPuan"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:id="@+id/textViewYemekPuan"
@@ -88,7 +71,9 @@
             android:textColor="@color/anaRenkGri"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/imageViewYildiz"
-            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"/>
 
         <ImageView
             android:id="@+id/imageViewKalori"
@@ -99,7 +84,9 @@
             android:src="@drawable/kalori_icon"
             app:layout_constraintEnd_toStartOf="@id/textViewYemekKalori"
             app:layout_constraintStart_toEndOf="@id/textViewYemekPuan"
-            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"/>
 
         <TextView
             android:id="@+id/textViewYemekKalori"
@@ -112,7 +99,9 @@
             android:textColor="@color/anaRenkGri"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/imageViewKalori"
-            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"/>
 
         <ImageView
             android:id="@+id/imageViewSure"
@@ -123,7 +112,9 @@
             android:src="@drawable/saat_icon"
             app:layout_constraintEnd_toStartOf="@id/textViewYemekSure"
             app:layout_constraintStart_toEndOf="@id/textViewYemekKalori"
-            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"/>
 
         <TextView
             android:id="@+id/textViewYemekSure"
@@ -136,7 +127,9 @@
             android:textColor="@color/anaRenkGri"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/imageViewSure"
-            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"/>
 
         <TextView
             android:id="@+id/textViewYemekAd"
@@ -215,22 +208,5 @@
             app:layout_constraintTop_toBottomOf="@id/textViewYemekFiyat"
             app:layout_constraintEnd_toStartOf="@id/yemekAdet"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/anaRenkGri2"
-                android:hint="Sipariş Notu"
-                android:textColor="@color/anaRenkSari"/>
-        </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

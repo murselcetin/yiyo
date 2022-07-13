@@ -12,10 +12,11 @@ import com.example.yiyo.R
 import com.example.yiyo.databinding.FragmentYemekDetayBinding
 import com.example.yiyo.ui.viewmodel.AnasayfaFragmentViewModel
 import com.example.yiyo.ui.viewmodel.YemekDetayFragmentViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class YemekDetayFragment : Fragment() {
+class YemekDetayFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentYemekDetayBinding
     private lateinit var viewModel: YemekDetayFragmentViewModel
     override fun onCreateView(

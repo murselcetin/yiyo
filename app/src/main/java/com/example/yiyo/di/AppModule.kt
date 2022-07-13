@@ -1,11 +1,15 @@
 package com.example.yiyo.di
 
+import android.content.Context
+import androidx.room.Room
 import com.example.yiyo.data.repo.YemeklerDaoRepository
 import com.example.yiyo.retrofit.ApiUtils
 import com.example.yiyo.retrofit.YemeklerDao
+import com.example.yiyo.room.RoomVeritabani
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -22,5 +26,12 @@ class AppModule {
     @Singleton
     fun provideYemeklerDao(): YemeklerDao{
         return ApiUtils.getYemeklerDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideYemeklerDao2(@ApplicationContext context: Context): YemeklerDao{
+        val vt = Room.databaseBuilder(context,RoomVeritabani::class.java,"yiyo.sqlite").createFromAsset("yiyo.sqlite").build()
+        return vt.favorileriGetir()
     }
 }

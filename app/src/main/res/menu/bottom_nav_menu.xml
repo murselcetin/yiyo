@@ -6,10 +6,11 @@
         android:icon="@drawable/anasayfa_icon"
         android:title="Anasayfa" />
     <item
-        android:id="@+id/placeHolder"
-        android:title=""/>
-    <item
         android:id="@+id/sepetFragment"
+        android:title="Sepet"
+        android:icon="@drawable/sepet_icon"/>
+    <item
+        android:id="@+id/favoriFragment"
         android:icon="@drawable/favori_icon"
         android:title="Favoriler" />
 </menu>

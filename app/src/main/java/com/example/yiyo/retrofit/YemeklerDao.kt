@@ -1,13 +1,11 @@
 package com.example.yiyo.retrofit
 
 import com.example.yiyo.data.entity.ESCevap
+import com.example.yiyo.data.entity.FavoriYemek
 import com.example.yiyo.data.entity.SepetYemeklerCevap
 import com.example.yiyo.data.entity.YemeklerCevap
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface YemeklerDao {
     @GET("yemekler/tumYemekleriGetir.php")
@@ -36,4 +34,6 @@ interface YemeklerDao {
         @Field("kullanici_adi") kullanici_adi: String
     ): Call<SepetYemeklerCevap>
 
+    @androidx.room.Query("SELECT * FROM favoriler")
+    suspend fun favoriYemekler(): List<FavoriYemek>
 }
