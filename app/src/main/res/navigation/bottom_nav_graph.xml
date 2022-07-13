@@ -34,7 +34,7 @@
         android:name="com.example.yiyo.ui.fragment.SepetFragment"
         android:label="fragment_sepet"
         tools:layout="@layout/fragment_sepet" />
-    <fragment
+    <dialog
         android:id="@+id/yemekDetayFragment"
         android:name="com.example.yiyo.ui.fragment.YemekDetayFragment"
         android:label="fragment_yemek_detay"
@@ -42,5 +42,5 @@
         <argument
             android:name="yemek"
             app:argType="com.example.yiyo.data.entity.Yemekler" />
-    </fragment>
+    </dialog>
 </navigation>
