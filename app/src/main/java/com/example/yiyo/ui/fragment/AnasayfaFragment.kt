@@ -34,6 +34,7 @@ class AnasayfaFragment : Fragment(), SearchView.OnQueryTextListener {
             val adapter = YemeklerAdapter(requireContext(), it, viewModel)
             binding.yemeklerAdapter = adapter
         }
+
         return binding.root
     }
 

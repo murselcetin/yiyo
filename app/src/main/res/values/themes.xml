@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Yiyo" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="Theme.Yiyo" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/anaRenkBeyaz</item>
         <item name="colorPrimaryVariant">@color/anaRenkGri</item>
@@ -25,5 +25,9 @@
     <style name="imageview">
         <item name="android:bottomLeftRadius">20dp</item>
         <item name="android:topRightRadius">20dp</item>
+    </style>
+    <style name="DialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
 </resources>

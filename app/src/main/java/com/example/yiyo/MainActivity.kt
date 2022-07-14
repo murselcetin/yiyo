@@ -23,5 +23,11 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         NavigationUI.setupWithNavController(binding.bottomNavBar, navHostFragment.navController)
+        binding.bottomNavBar.background = null
+        binding.bottomNavBar.menu.getItem(1).isEnabled = false
+
+        binding.fab.setOnClickListener {
+            navHostFragment.navController.navigate(R.id.sepetFragment)
+        }
     }
 }

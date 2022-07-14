@@ -7,5 +7,5 @@ import com.example.yiyo.retrofit.YemeklerDao
 
 @Database(entities = [FavoriYemek::class], version = 1)
 abstract class RoomVeritabani : RoomDatabase() {
-    abstract fun favorileriGetir() : YemeklerDao
+    abstract fun favorileriGetir() : FavorilerDao
 }

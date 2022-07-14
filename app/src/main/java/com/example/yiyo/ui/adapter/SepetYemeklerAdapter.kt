@@ -17,12 +17,10 @@ import com.example.yiyo.databinding.SepetYemekRecyclerviewBinding
 import com.example.yiyo.databinding.YemekRecyclerviewBinding
 import com.example.yiyo.ui.fragment.SepetFragment
 import com.example.yiyo.ui.viewmodel.SepetFragmentViewModel
+import com.example.yiyo.util.resimYukle
 
 
-class SepetYemeklerAdapter(
-    var mContext: Context,
-    var sepettekiYemekListesi: List<SepetYemekler>,
-    var viewModel: SepetFragmentViewModel
+class SepetYemeklerAdapter(var mContext: Context, var sepettekiYemekListesi: List<SepetYemekler>, var viewModel: SepetFragmentViewModel
 ) : RecyclerView.Adapter<SepetYemeklerAdapter.TasarimTutucu>() {
     inner class TasarimTutucu(binding: SepetYemekRecyclerviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -37,10 +35,7 @@ class SepetYemeklerAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasarimTutucu {
         val layoutInflater = LayoutInflater.from(mContext)
         val binding: SepetYemekRecyclerviewBinding =
-            DataBindingUtil.inflate(
-                layoutInflater,
-                R.layout.sepet_yemek_recyclerview,
-                parent,
+            DataBindingUtil.inflate(layoutInflater, R.layout.sepet_yemek_recyclerview, parent,
                 false
             )
         return TasarimTutucu(binding)
@@ -51,18 +46,20 @@ class SepetYemeklerAdapter(
         val t = holder.binding
         t.sepetYemek = sepettekiYemek
 
+        t.yemekResim.resimYukle(sepettekiYemek.yemek_resim_adi)
         t.cardViewSepetYemek.setOnClickListener {
             val builder = AlertDialog.Builder(mContext)
-            builder.setTitle("YİYO")
-            builder.setMessage("Seçtiğiniz yemeği sepetten çıkartmak istediğinize emin misiniz ?")
-
-            builder.setPositiveButton("Evet") { dialog, which ->
+            val alertTasarim = LayoutInflater.from(mContext).inflate(R.layout.alert_dialog, null)
+            val evetButton = alertTasarim.findViewById(R.id.buttonEvet) as Button
+            val hayirButton = alertTasarim.findViewById(R.id.buttonHayir) as Button
+            builder.setView(alertTasarim)
+            val d= builder.create()
+            evetButton.setOnClickListener {
                 viewModel.sepettekiYemekSil(sepettekiYemek.sepet_yemek_id, sepettekiYemek.kullanici_adi)
                 viewModel.sepettekiYemekleriYukle("mursel")
+                d.dismiss()
             }
-            builder.setNegativeButton("Hayır") { dialog, which -> }
-
-            builder.show()
+            d.show()
         }
     }
 

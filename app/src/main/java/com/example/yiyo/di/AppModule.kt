@@ -2,9 +2,11 @@ package com.example.yiyo.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.yiyo.data.repo.FavorilerDaoRepository
 import com.example.yiyo.data.repo.YemeklerDaoRepository
 import com.example.yiyo.retrofit.ApiUtils
 import com.example.yiyo.retrofit.YemeklerDao
+import com.example.yiyo.room.FavorilerDao
 import com.example.yiyo.room.RoomVeritabani
 import dagger.Module
 import dagger.Provides
@@ -24,14 +26,20 @@ class AppModule {
 
     @Provides
     @Singleton
+    fun provideFavorilerDaoRepository(fdao: FavorilerDao): FavorilerDaoRepository {
+        return FavorilerDaoRepository(fdao)
+    }
+
+    @Provides
+    @Singleton
     fun provideYemeklerDao(): YemeklerDao{
         return ApiUtils.getYemeklerDao()
     }
 
     @Provides
     @Singleton
-    fun provideYemeklerDao2(@ApplicationContext context: Context): YemeklerDao{
-        val vt = Room.databaseBuilder(context,RoomVeritabani::class.java,"yiyo.sqlite").createFromAsset("yiyo.sqlite").build()
+    fun provideFavorilerDao(@ApplicationContext context: Context): FavorilerDao{
+        val vt = Room.databaseBuilder(context, RoomVeritabani::class.java,"yiyo.sqlite").createFromAsset("yiyo.sqlite").build()
         return vt.favorileriGetir()
     }
 }

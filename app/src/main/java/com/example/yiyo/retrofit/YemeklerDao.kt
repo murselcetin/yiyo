@@ -33,7 +33,4 @@ interface YemeklerDao {
         @Field("sepet_yemek_id") sepet_yemek_id: Int,
         @Field("kullanici_adi") kullanici_adi: String
     ): Call<SepetYemeklerCevap>
-
-    @androidx.room.Query("SELECT * FROM favoriler")
-    suspend fun favoriYemekler(): List<FavoriYemek>
 }
