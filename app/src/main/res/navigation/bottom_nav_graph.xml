@@ -29,7 +29,7 @@
             android:id="@+id/favoriToYemekDetay"
             app:destination="@id/yemekDetayFragment" />
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/sepetFragment"
         android:name="com.example.yiyo.ui.fragment.SepetFragment"
         android:label="fragment_sepet"

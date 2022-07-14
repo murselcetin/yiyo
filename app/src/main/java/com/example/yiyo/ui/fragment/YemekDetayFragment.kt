@@ -12,6 +12,7 @@ import com.example.yiyo.R
 import com.example.yiyo.databinding.FragmentYemekDetayBinding
 import com.example.yiyo.ui.viewmodel.AnasayfaFragmentViewModel
 import com.example.yiyo.ui.viewmodel.YemekDetayFragmentViewModel
+import com.example.yiyo.util.resimYukle
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,6 +30,10 @@ class YemekDetayFragment : BottomSheetDialogFragment() {
         val bundle: YemekDetayFragmentArgs by navArgs()
         val gelenYemek = bundle.yemek
         binding.gelenYemek = gelenYemek
+
+        viewModel.yemekAdi = gelenYemek.yemek_adi
+
+        binding.imageViewYemek.resimYukle(gelenYemek.yemek_resim_adi)
 
         return binding.root
     }
@@ -49,11 +54,7 @@ class YemekDetayFragment : BottomSheetDialogFragment() {
         binding.yemekSiparisAdet.text = (yemekAdet - 1).toString()
     }
 
-    fun sepeteEkle(
-        yemek_adi: String,
-        yemek_resim_adi: String,
-        yemek_fiyat: Int,
-        yemek_siparis_adet: Int) {
+    fun sepeteEkle(yemek_adi: String, yemek_resim_adi: String, yemek_fiyat: Int, yemek_siparis_adet: Int) {
         viewModel.sepeteEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, yemek_siparis_adet, "mursel")
     }
 }

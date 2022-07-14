@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="gelenYemek"
             type="com.example.yiyo.data.entity.Yemekler" />

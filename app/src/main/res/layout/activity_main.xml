@@ -5,22 +5,31 @@
 
     <data></data>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragmentContainerView"
                 android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:defaultNavHost="true"
-                app:layout_constraintBottom_toTopOf="@id/bottomNavBar"
-                app:layout_constraintEnd_toEndOf="@id/constraint"
-                app:layout_constraintStart_toStartOf="@id/constraint"
-                app:layout_constraintTop_toTopOf="@id/constraint"
-                app:navGraph="@navigation/bottom_nav_graph" />
+                app:navGraph="@navigation/bottom_nav_graph"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:paddingBottom="55dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/anaRenkGri"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavBar"
@@ -29,10 +38,15 @@
                 android:background="@color/anaRenkGri"
                 app:itemIconTint="@color/anaRenkSari"
                 app:labelVisibilityMode="unlabeled"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:menu="@menu/bottom_nav_menu" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.bottomappbar.BottomAppBar>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:layout_anchor="@id/appBar"
+            app:srcCompat="@drawable/sepet_icon" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

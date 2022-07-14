@@ -13,6 +13,7 @@ import com.example.yiyo.databinding.YemekRecyclerviewBinding
 import com.example.yiyo.ui.fragment.AnasayfaFragmentDirections
 import com.example.yiyo.ui.viewmodel.AnasayfaFragmentViewModel
 import com.example.yiyo.util.gecisYap
+import com.example.yiyo.util.resimYukle
 
 
 class YemeklerAdapter(
@@ -41,6 +42,7 @@ class YemeklerAdapter(
         val t = holder.binding
         t.yemek = yemek
 
+        t.imageViewYemekResim.resimYukle(yemek.yemek_resim_adi)
         t.cardViewYemek.setOnClickListener() {
             val gecis = AnasayfaFragmentDirections.anasayfaToYemekDetay(yemek = yemek)
             Navigation.gecisYap(it, gecis)

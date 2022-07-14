@@ -41,7 +41,6 @@ class YemeklerDaoRepository(var ydao: YemeklerDao) {
     fun sepettekiYemekleriAl(kullanici_adi: String){
         ydao.sepettekiYemekleriGetir(kullanici_adi).enqueue(object : Callback<SepetYemeklerCevap>{
             override fun onResponse(call: Call<SepetYemeklerCevap>?, response: Response<SepetYemeklerCevap>) {
-                Log.e("mesaj","${response.body().sepet_yemekler.size}")
                 val liste = response.body().sepet_yemekler
                 sepetYemekListesi.value = liste
             }
