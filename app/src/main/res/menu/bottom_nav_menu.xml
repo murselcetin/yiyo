@@ -9,7 +9,7 @@
         android:id="@+id/placeHolder"
         android:title="Sepet" />
     <item
-        android:id="@+id/favoriFragment"
+        android:id="@+id/sepetOnayFragment"
         android:icon="@drawable/favori_icon"
         android:title="Favoriler" />
 </menu>

@@ -13,6 +13,7 @@ import com.example.yiyo.databinding.FragmentYemekDetayBinding
 import com.example.yiyo.ui.viewmodel.AnasayfaFragmentViewModel
 import com.example.yiyo.ui.viewmodel.YemekDetayFragmentViewModel
 import com.example.yiyo.util.resimYukle
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
