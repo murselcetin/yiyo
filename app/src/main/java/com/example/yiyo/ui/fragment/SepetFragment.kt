@@ -6,15 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yiyo.R
 import com.example.yiyo.databinding.FragmentSepetBinding
 import com.example.yiyo.ui.adapter.SepetYemeklerAdapter
 import com.example.yiyo.ui.viewmodel.SepetFragmentViewModel
+import com.example.yiyo.util.gecisYap
 import com.google.android.material.bottomappbar.BottomAppBarTopEdgeTreatment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +40,7 @@ class SepetFragment : BottomSheetDialogFragment() {
             Log.e("AdapterSayi",it.toString())
             binding.sepetYemeklerAdapter = adapter
         }
+
         return binding.root
     }
 
