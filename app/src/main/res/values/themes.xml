@@ -30,4 +30,9 @@
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
+
+    <style name="bottomsheet" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">24dp</item>
+    </style>
 </resources>
