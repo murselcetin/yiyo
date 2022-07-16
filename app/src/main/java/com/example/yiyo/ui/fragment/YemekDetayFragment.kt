@@ -1,6 +1,7 @@
 package com.example.yiyo.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.yiyo.R
+import com.example.yiyo.data.entity.FavoriYemek
 import com.example.yiyo.databinding.FragmentYemekDetayBinding
 import com.example.yiyo.ui.viewmodel.AnasayfaFragmentViewModel
 import com.example.yiyo.ui.viewmodel.YemekDetayFragmentViewModel
@@ -32,8 +34,20 @@ class YemekDetayFragment : BottomSheetDialogFragment() {
         val gelenYemek = bundle.yemek
         binding.gelenYemek = gelenYemek
 
-        viewModel.yemekAdi = gelenYemek.yemek_adi
+        viewModel.siparisYemekAdiGetir { itAdi->
+            if(itAdi == gelenYemek.yemek_adi){
+                viewModel.yemekAdetGetir { itAdet->
+                    binding.yemekSiparisAdet.text = itAdet.toString()
+                }
+            }
+        }
 
+        binding.cardViewFavori.setOnClickListener{
+            viewModel.favoriKayit(gelenYemek.yemek_resim_adi,gelenYemek.yemek_adi,gelenYemek.yemek_fiyat)
+            Log.e("Favori","${gelenYemek.yemek_adi} favorilere eklendi.")
+        }
+
+        viewModel.yemekAdi = gelenYemek.yemek_adi
         binding.imageViewYemek.resimYukle(gelenYemek.yemek_resim_adi)
 
         return binding.root

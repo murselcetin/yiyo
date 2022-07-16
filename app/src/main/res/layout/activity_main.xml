@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             app:layout_anchor="@id/appBar"
-            app:srcCompat="@drawable/sepet_icon" />
+            app:srcCompat="@drawable/sepet_icon"
+            android:backgroundTint="@color/anaRenkGri"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

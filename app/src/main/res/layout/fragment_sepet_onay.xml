@@ -5,13 +5,209 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageViewKonum"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        map:srcCompat="@drawable/konum_icon"
+        map:layout_constraintTop_toTopOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintEnd_toStartOf="@id/textViewKonum"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:id="@+id/textViewKonum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teslimat Adresi"
+        map:layout_constraintStart_toEndOf="@id/imageViewKonum"
+        map:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp"
+        android:textSize="15sp"
+        android:textColor="@color/anaRenkGri"
+        android:fontFamily="@font/kdam"/>
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="296dp"
-        android:layout_height="253dp"
-        tools:context=".ui.fragment.SepetOnayFragment"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="71dp" />
+        android:layout_width="375dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="10dp"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@id/textViewKonum"
+        tools:context=".ui.fragment.SepetOnayFragment" />
+    <ImageView
+        android:id="@+id/imageViewOdeme"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        map:srcCompat="@drawable/odeme_icon"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintEnd_toStartOf="@id/textViewOdeme"
+        map:layout_constraintTop_toBottomOf="@id/map"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:id="@+id/textViewOdeme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ödeme Yöntemi"
+        map:layout_constraintStart_toEndOf="@id/imageViewOdeme"
+        map:layout_constraintTop_toBottomOf="@id/map"
+        android:layout_margin="20dp"
+        android:textSize="15sp"
+        android:textColor="@color/anaRenkGri"
+        android:fontFamily="@font/kdam"/>
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/radioButton"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@id/textViewOdeme"
+        android:layout_marginStart="20dp">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:text="Nakit"
+            android:textSize="14sp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"/>
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:text="Kredi Kartı"
+            android:textSize="14sp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"/>
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:text="Online"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:text="Yemek Kartı"
+            android:textSize="14sp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"/>
+    </RadioGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/kupon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintTop_toBottomOf="@id/rg">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kupon Kodu Giriniz"
+            android:backgroundTint="@color/anaRenkSari"
+            android:textSize="15sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textViewSepetTutar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sepet Tutarı: "
+        android:textSize="18sp"
+        android:textColor="@color/anaRenkGri2"
+        android:fontFamily="@font/kdam"
+        map:layout_constraintTop_toBottomOf="@id/kupon"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintEnd_toStartOf="@id/textViewTutar"/>
+    <TextView
+        android:id="@+id/textViewTutar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="123.00 ₺"
+        android:textSize="18sp"
+        android:textColor="@color/anaRenkGri"
+        android:fontFamily="@font/kdam"
+        map:layout_constraintTop_toBottomOf="@id/kupon"
+        map:layout_constraintStart_toEndOf="@id/textViewSepetTutar"
+        map:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewIndirim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kdam"
+        android:text="İndirim Tutarı: "
+        android:textColor="@color/anaRenkGri2"
+        android:textSize="18sp"
+        map:layout_constraintEnd_toEndOf="@+id/textViewSepetTutar"
+        map:layout_constraintStart_toStartOf="@+id/textViewSepetTutar"
+        map:layout_constraintTop_toBottomOf="@id/textViewSepetTutar" />
+
+    <TextView
+        android:id="@+id/textViewIndirimTutar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kdam"
+        android:text="0.00 ₺"
+        android:textColor="@color/anaRenkGri"
+        android:textSize="18sp"
+        map:layout_constraintEnd_toEndOf="@+id/textViewTutar"
+        map:layout_constraintStart_toStartOf="@+id/textViewTutar"
+        map:layout_constraintTop_toBottomOf="@id/textViewTutar" />
+    <TextView
+        android:id="@+id/textViewOdenecek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kdam"
+        android:text="Ödenecek Tutar: "
+        android:textColor="@color/anaRenkGri2"
+        android:textSize="20sp"
+        map:layout_constraintEnd_toEndOf="@+id/textViewIndirim"
+        map:layout_constraintStart_toStartOf="@+id/textViewIndirim"
+        map:layout_constraintTop_toBottomOf="@id/textViewIndirim" />
+
+    <TextView
+        android:id="@+id/textViewOdenecekTutar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kdam"
+        android:text="123.00 ₺"
+        android:textAllCaps="false"
+        android:textColor="@color/anaRenkGri"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        map:layout_constraintEnd_toEndOf="@+id/textViewIndirimTutar"
+        map:layout_constraintStart_toStartOf="@+id/textViewIndirimTutar"
+        map:layout_constraintTop_toBottomOf="@id/textViewIndirimTutar" />
+
+    <Button
+        android:id="@+id/buttonOnau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/anaRenkGri"
+        android:text="SİPARİŞİ ONAYLA"
+        android:textColor="@color/anaRenkSari"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/textViewOdenecek"
+        android:layout_marginBottom="10dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,12 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.yiyo.data.entity.SepetYemekler
 import com.example.yiyo.data.entity.Yemekler
+import com.example.yiyo.data.repo.FavorilerDaoRepository
 import com.example.yiyo.data.repo.YemeklerDaoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class YemekDetayFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepository) : ViewModel() {
+class YemekDetayFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepository,var frepo:FavorilerDaoRepository) : ViewModel() {
     var yemekAdi: String = ""
     var yemekSiparisId:Int = 0
     var sepettekiYemekListesi = MutableLiveData<List<SepetYemekler>>()
@@ -33,6 +34,15 @@ class YemekDetayFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepo
         }
     }
 
+    fun favoriKayit(favoriYemekResim: String, favoriYemekAdi: String, favoriYemekFiyat: Int) {
+        frepo.favoriEkle(favoriYemekResim,favoriYemekAdi,favoriYemekFiyat)
+    }
+
+    fun favoriKontrol(favoriYemekAdi: String) : Int{
+        return frepo.favoriAra(favoriYemekAdi)
+    }
+
+
     fun yemekAdetGetir(sepetYemekAdet: (result: Int) -> Unit){
         val liste = sepettekiYemekListesi.value
         val yemekAdet = liste?.filter { it.yemek_adi.contains(yemekAdi) }?.getOrNull(0)?.yemek_siparis_adet?:0
@@ -47,5 +57,11 @@ class YemekDetayFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepo
         val liste = sepettekiYemekListesi.value
         val yemekId = liste?.filter { it.yemek_adi.contains(yemekAdi) }?.getOrNull(0)?.sepet_yemek_id?:0
         sepetYemekId.invoke(yemekId)
+    }
+
+    fun siparisYemekAdiGetir(sepetYemekAdi: (result: String) -> Unit){
+        val liste = sepettekiYemekListesi.value
+        val yemekAdi = liste?.filter { it.yemek_adi.contains(yemekAdi) }?.getOrNull(0)?.yemek_adi?:""
+        sepetYemekAdi.invoke(yemekAdi)
     }
 }

@@ -17,9 +17,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragment.SepetFragment"
-        style="?attr/bottomSheetStyle"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        tools:context=".ui.fragment.SepetFragment">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
