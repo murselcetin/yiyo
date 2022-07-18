@@ -3,22 +3,37 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/adresler_icon.xml" value="0.244" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/anasayfa_icon.xml" value="0.163" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/arama_icon.xml" value="0.27" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/cardview.xml" value="0.1" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/cikis_icon.xml" value="0.244" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/favori_bos.xml" value="0.29" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/favori_icon.xml" value="0.1665" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/kartlar_icon.xml" value="0.244" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/kullanici_icon.xml" value="0.2385" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/kupon_icon.xml" value="0.244" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/sepet_icon.xml" value="0.1665" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/sil_icon.xml" value="0.244" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/alert_dialog.xml" value="0.365625" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/favori_recyclerview.xml" value="0.365625" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_anasayfa.xml" value="0.12" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_acilis.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_anasayfa.xml" value="0.25" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_birinci.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_favori.xml" value="0.22" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_giris.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_ikinci.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_kayit.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_kullanici.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_sepet.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_sepet_onay.xml" value="0.33" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_view_pager.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/fragment_yemek_detay.xml" value="0.33" />
-        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/sepet_yemek_recyclerview.xml" value="0.365625" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/sepet_yemek_recyclerview.xml" value="0.33" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/sepetten_sil_alert.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/siparis_tamamlandi_alert.xml" value="0.365625" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/yemek_recyclerview.xml" value="0.7192028985507246" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/menu/toolbar_menu.xml" value="0.36666666666666664" />

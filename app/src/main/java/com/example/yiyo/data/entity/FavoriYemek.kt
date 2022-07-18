@@ -12,6 +12,7 @@ data class FavoriYemek(
     @ColumnInfo(name = "favori_id") @NotNull var favori_id: Int,
     @ColumnInfo(name = "yemek_resim_adi") @NotNull var yemek_resim_adi: String,
     @ColumnInfo(name = "yemek_adi") @NotNull var yemek_adi: String,
-    @ColumnInfo(name = "yemek_fiyat") @NotNull var yemek_fiyat: Int
+    @ColumnInfo(name = "yemek_fiyat") @NotNull var yemek_fiyat: Int,
+    @ColumnInfo(name = "kullanici_id") @NotNull var kullanici_id: Int,
 ) : Serializable {}
 

@@ -1,5 +1,7 @@
 package com.example.yiyo.util
 
+import android.app.Activity
+import android.util.DisplayMetrics
 import android.view.View
 import android.widget.ImageView
 import androidx.navigation.NavDirections
@@ -17,4 +19,9 @@ fun Navigation.gecisYap(v: View, id: NavDirections) {
 fun ImageView.resimYukle(resimAdi: String){
     val url = "http://kasimadalan.pe.hu/yemekler/resimler/${resimAdi}"
     Picasso.get().load(url).into(this)
+}
+fun Activity.displayMetrics(): DisplayMetrics {
+    val displayMetrics = DisplayMetrics()
+    windowManager.defaultDisplay.getMetrics(displayMetrics)
+    return displayMetrics
 }

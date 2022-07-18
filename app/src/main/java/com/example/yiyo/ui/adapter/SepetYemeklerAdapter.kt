@@ -1,7 +1,6 @@
 package com.example.yiyo.ui.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.*
@@ -10,12 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yiyo.R
 import com.example.yiyo.data.entity.SepetYemekler
-import com.example.yiyo.databinding.ActivityMainBinding.inflate
-import com.example.yiyo.databinding.AlertDialogBinding
-import com.example.yiyo.databinding.FragmentSepetBinding
 import com.example.yiyo.databinding.SepetYemekRecyclerviewBinding
-import com.example.yiyo.databinding.YemekRecyclerviewBinding
-import com.example.yiyo.ui.fragment.SepetFragment
 import com.example.yiyo.ui.viewmodel.SepetFragmentViewModel
 import com.example.yiyo.util.resimYukle
 
@@ -47,9 +41,9 @@ class SepetYemeklerAdapter(var mContext: Context, var sepettekiYemekListesi: Lis
         t.sepetYemek = sepettekiYemek
 
         t.yemekResim.resimYukle(sepettekiYemek.yemek_resim_adi)
-        t.cardViewSepetYemek.setOnClickListener {
+        t.imageViewSil.setOnClickListener {
             val builder = AlertDialog.Builder(mContext)
-            val alertTasarim = LayoutInflater.from(mContext).inflate(R.layout.alert_dialog, null)
+            val alertTasarim = LayoutInflater.from(mContext).inflate(R.layout.sepetten_sil_alert, null)
             val evetButton = alertTasarim.findViewById(R.id.buttonEvet) as Button
             val hayirButton = alertTasarim.findViewById(R.id.buttonHayir) as Button
             builder.setView(alertTasarim)
@@ -57,6 +51,9 @@ class SepetYemeklerAdapter(var mContext: Context, var sepettekiYemekListesi: Lis
             evetButton.setOnClickListener {
                 viewModel.sepettekiYemekSil(sepettekiYemek.sepet_yemek_id, sepettekiYemek.kullanici_adi)
                 viewModel.sepettekiYemekleriYukle("mursel")
+                d.dismiss()
+            }
+            hayirButton.setOnClickListener {
                 d.dismiss()
             }
             d.show()

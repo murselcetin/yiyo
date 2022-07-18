@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_nav_graph"
-    app:startDestination="@id/anasayfaFragment">
+    app:startDestination="@id/acilisFragment2">
 
     <fragment
         android:id="@+id/anasayfaFragment"
@@ -16,6 +16,9 @@
         <action
             android:id="@+id/anasayfaToSepet"
             app:destination="@id/sepetFragment" />
+        <action
+            android:id="@+id/action_anasayfaFragment_to_kullaniciFragment"
+            app:destination="@id/kullaniciFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriFragment"
@@ -28,6 +31,21 @@
         <action
             android:id="@+id/favoriToYemekDetay"
             app:destination="@id/yemekDetayFragment" />
+        <action
+            android:id="@+id/action_favoriFragment_to_anasayfaFragment"
+            app:destination="@id/anasayfaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/girisFragment"
+        android:name="com.example.yiyo.ui.fragment.viewpager.GirisFragment"
+        android:label="fragment_giris"
+        tools:layout="@layout/fragment_giris">
+        <action
+            android:id="@+id/action_girisFragment_to_anasayfaFragment"
+            app:destination="@id/anasayfaFragment" />
+        <action
+            android:id="@+id/action_girisFragment_to_kayitFragment2"
+            app:destination="@id/kayitFragment2" />
     </fragment>
     <dialog
         android:id="@+id/sepetFragment"
@@ -51,4 +69,38 @@
         android:id="@+id/sepetOnayFragment"
         android:name="com.example.yiyo.ui.fragment.SepetOnayFragment"
         android:label="SepetOnayFragment" />
+    <fragment
+        android:id="@+id/acilisFragment2"
+        android:name="com.example.yiyo.ui.fragment.AcilisFragment"
+        android:label="fragment_acilis"
+        tools:layout="@layout/fragment_acilis" >
+        <action
+            android:id="@+id/action_acilisFragment2_to_viewPagerFragment2"
+            app:destination="@id/viewPagerFragment2" />
+        <action
+            android:id="@+id/action_acilisFragment2_to_girisFragment"
+            app:destination="@id/girisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment2"
+        android:name="com.example.yiyo.ui.fragment.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
+    <fragment
+        android:id="@+id/kayitFragment2"
+        android:name="com.example.yiyo.ui.fragment.KayitFragment"
+        android:label="KayitFragment" >
+        <action
+            android:id="@+id/action_kayitFragment2_to_girisFragment"
+            app:destination="@id/girisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kullaniciFragment"
+        android:name="com.example.yiyo.ui.fragment.KullaniciFragment"
+        android:label="fragment_kullanici"
+        tools:layout="@layout/fragment_kullanici" >
+        <action
+            android:id="@+id/action_kullaniciFragment_to_girisFragment"
+            app:destination="@id/girisFragment" />
+    </fragment>
 </navigation>
