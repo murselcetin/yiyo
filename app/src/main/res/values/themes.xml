@@ -6,7 +6,7 @@
         <item name="colorPrimaryVariant">@color/anaRenkGri</item>
         <item name="colorOnPrimary">@color/anaRenkBeyaz</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">@color/anaRenkSari</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/anaRenkBeyaz</item>
         <!-- Status bar color. -->
@@ -31,8 +31,18 @@
         <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
 
-    <style name="bottomsheet" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+    <style name="Widget.MyApp.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="behavior_skipCollapsed">true</item>
+        <item name="behavior_fitToContents">true</item>
+        <item name="behavior_peekHeight">1000dp</item>
+        <item name="behavior_hideable">true</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.LargeComponent</item>
+    </style>
+    <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">24dp</item>
+    </style>
+    <style name="Theme.Yiyo.BottomSheetDialog" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.MyApp.BottomSheet.Modal</item>
     </style>
 </resources>

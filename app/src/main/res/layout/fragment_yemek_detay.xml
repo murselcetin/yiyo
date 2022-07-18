@@ -14,206 +14,225 @@
             type="com.example.yiyo.ui.fragment.YemekDetayFragment" />
     </data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/anaRenkGri2"
+        tools:context=".ui.fragment.YemekDetayFragment">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewFavori"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/anaRenkGri"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/favori_bos" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/imageViewYemek"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/kofte"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewYildiz"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/yildiz_icon"
+            app:layout_constraintEnd_toStartOf="@id/textViewYemekPuan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
+
+        <TextView
+            android:id="@+id/textViewYemekPuan"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/anaRenkBeyaz"
-            tools:context=".ui.fragment.YemekDetayFragment">
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/kdam"
+            android:text="4.8"
+            android:textColor="@color/anaRenkBeyaz"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/imageViewYildiz"
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
 
+        <ImageView
+            android:id="@+id/imageViewKalori"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/kalori_icon"
+            app:layout_constraintEnd_toStartOf="@id/textViewYemekKalori"
+            app:layout_constraintStart_toEndOf="@id/textViewYemekPuan"
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewFavori"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="15dp"
-                android:backgroundTint="@color/anaRenkGri"
-                app:cardCornerRadius="7dp"
-                app:cardElevation="3dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/textViewYemekKalori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/kdam"
+            android:text="500 kcal"
+            android:textColor="@color/anaRenkBeyaz"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/imageViewKalori"
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/favori_bos" />
-            </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/imageViewSure"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/saat_icon"
+            app:layout_constraintEnd_toStartOf="@id/textViewYemekSure"
+            app:layout_constraintStart_toEndOf="@id/textViewYemekKalori"
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
 
-            <ImageView
-                android:id="@+id/imageViewYemek"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:src="@drawable/kofte"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textViewYemekSure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/kdam"
+            android:text="20-30 dk."
+            android:textColor="@color/anaRenkBeyaz"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/imageViewSure"
+            app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
 
-            <ImageView
-                android:id="@+id/imageViewYildiz"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/yildiz_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/textViewYemekPuan"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
+        <TextView
+            android:id="@+id/textViewYemekAd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/kdam"
+            android:text="@{gelenYemek.yemek_adi}"
+            android:textColor="@color/anaRenkBeyaz"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageViewYemek" />
 
-            <TextView
-                android:id="@+id/textViewYemekPuan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/kdam"
-                android:text="4.8"
-                android:textColor="@color/anaRenkGri"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageViewYildiz"
-                app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
+        <TextView
+            android:id="@+id/textViewYemekFiyat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/kdam"
+            android:text='@{gelenYemek.yemek_fiyat+".00 ₺"}'
+            android:textColor="@color/anaRenkSari"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewYemekAd" />
 
-            <ImageView
-                android:id="@+id/imageViewKalori"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/kalori_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/textViewYemekKalori"
-                app:layout_constraintStart_toEndOf="@id/textViewYemekPuan"
-                app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
-
-            <TextView
-                android:id="@+id/textViewYemekKalori"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/kdam"
-                android:text="500 kcal"
-                android:textColor="@color/anaRenkGri"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageViewKalori"
-                app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
-
-            <ImageView
-                android:id="@+id/imageViewSure"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/saat_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/textViewYemekSure"
-                app:layout_constraintStart_toEndOf="@id/textViewYemekKalori"
-                app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
-
-            <TextView
-                android:id="@+id/textViewYemekSure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/kdam"
-                android:text="20-30 dk."
-                android:textColor="@color/anaRenkGri"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageViewSure"
-                app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
-
-            <TextView
-                android:id="@+id/textViewYemekAd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/kdam"
-                android:text="@{gelenYemek.yemek_adi}"
-                android:textColor="@color/anaRenkGri"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageViewYemek" />
-
-            <TextView
-                android:id="@+id/textViewYemekFiyat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/kdam"
-                android:text='@{gelenYemek.yemek_fiyat+".00 ₺"}'
-                android:textColor="@color/anaRenkSari"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewYemekAd" />
-
-            <LinearLayout
-                android:id="@+id/yemekAdet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="45dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/sepeteEkle"
-                app:layout_constraintTop_toBottomOf="@id/textViewYemekFiyat">
-
-                <Button
-                    android:id="@+id/eksiButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:backgroundTint="@color/anaRenkGri"
-                    android:clickable="true"
-                    android:onClick="@{()-> yemekDetayFragment.yemekAdetEksi()}"
-                    android:text="-"
-                    android:textColor="@color/anaRenkSari"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/yemekSiparisAdet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:text="1"
-                    android:textColor="@color/anaRenkSari"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/artiButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:backgroundTint="@color/anaRenkGri"
-                    android:clickable="true"
-                    android:onClick="@{()-> yemekDetayFragment.yemekAdetArti()}"
-                    android:text="+"
-                    android:textColor="@color/anaRenkSari"
-                    android:textSize="15sp" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/yemekAdet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="45dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/sepeteEkle"
+            app:layout_constraintTop_toBottomOf="@id/textViewYemekFiyat">
 
             <Button
-                android:id="@+id/sepeteEkle"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="40dp"
-                android:backgroundTint="@color/anaRenkSari"
-                android:onClick="@{()-> yemekDetayFragment.sepeteEkle(gelenYemek.yemek_adi,gelenYemek.yemek_resim_adi,gelenYemek.yemek_fiyat,Integer.parseInt(yemekSiparisAdet.getText().toString()))}"
-                android:text="SEPETE EKLE"
-                android:textColor="@color/anaRenkGri"
-                app:layout_constraintEnd_toStartOf="@id/yemekAdet"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewYemekFiyat" />
+                android:id="@+id/eksiButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/anaRenkGri"
+                android:clickable="true"
+                android:onClick="@{()-> yemekDetayFragment.yemekAdetEksi()}"
+                android:text="-"
+                android:textColor="@color/anaRenkSari"
+                android:textSize="15sp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/yemekSiparisAdet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="1"
+                android:textColor="@color/anaRenkSari"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/artiButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/anaRenkGri"
+                android:clickable="true"
+                android:onClick="@{()-> yemekDetayFragment.yemekAdetArti()}"
+                android:text="+"
+                android:textColor="@color/anaRenkSari"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/sepeteEkle"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="@color/anaRenkSari"
+            android:onClick="@{()-> yemekDetayFragment.sepeteEkle(gelenYemek.yemek_adi,gelenYemek.yemek_resim_adi,gelenYemek.yemek_fiyat,Integer.parseInt(yemekSiparisAdet.getText().toString()))}"
+            android:text="SEPETE EKLE"
+            android:textColor="@color/anaRenkGri"
+            app:layout_constraintEnd_toStartOf="@id/yemekAdet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewYemekFiyat" />
+
+        <TextView
+            android:id="@+id/textViewYemekAciklama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="YİYO farkıyla eşsiz lezzet!"
+            android:textColor="@color/anaRenkBeyaz"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewYemekKalori" />
+
+        <TextView
+            android:id="@+id/textViewYemekIcindekiler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="İçindekiler: Köfte, patates kızartması, ızgara domates ve biber "
+            android:textAlignment="center"
+            android:textColor="@color/anaRenkBeyaz"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewYemekAciklama" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

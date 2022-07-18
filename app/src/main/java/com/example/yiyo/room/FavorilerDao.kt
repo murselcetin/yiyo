@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.yiyo.data.entity.FavoriYemek
+import com.example.yiyo.data.entity.Kullanici
 
 @Dao
 interface FavorilerDao {
@@ -17,6 +18,6 @@ interface FavorilerDao {
     @Delete
     suspend fun favoriSil(favoriYemek: FavoriYemek)
 
-    @Query("SELECT * FROM favoriler WHERE yemek_adi like '%' ||:favoriYemekAdi|| '%'")
+    @Query("SELECT * FROM favoriler WHERE yemek_adi = :favoriYemekAdi LIMIT 1")
     suspend fun favoriArama(favoriYemekAdi: String): List<FavoriYemek>
 }

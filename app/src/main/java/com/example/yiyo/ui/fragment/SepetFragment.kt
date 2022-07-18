@@ -1,21 +1,26 @@
 package com.example.yiyo.ui.fragment
 
+import android.app.Dialog
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yiyo.R
 import com.example.yiyo.databinding.FragmentSepetBinding
 import com.example.yiyo.ui.adapter.SepetYemeklerAdapter
 import com.example.yiyo.ui.viewmodel.SepetFragmentViewModel
+import com.example.yiyo.util.displayMetrics
 import com.example.yiyo.util.gecisYap
 import com.google.android.material.bottomappbar.BottomAppBarTopEdgeTreatment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -37,10 +42,22 @@ class SepetFragment : BottomSheetDialogFragment() {
 
         viewModel.sepettekiYemekListesi.observe(viewLifecycleOwner) {
             val adapter = SepetYemeklerAdapter(requireContext(), it, viewModel)
-            Log.e("AdapterSayi",it.toString())
+            Log.e("AdapterSayi", it.toString())
             binding.sepetYemeklerAdapter = adapter
         }
-
+        viewModel.sepettekiYemekListesi.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
+                binding.rv.visibility = View.INVISIBLE
+                binding.sepetOnay.visibility = View.GONE
+                binding.anim.visibility = View.VISIBLE
+                binding.sepetBos.visibility = View.VISIBLE
+            }else{
+                binding.rv.visibility = View.VISIBLE
+                binding.sepetOnay.visibility = View.VISIBLE
+                binding.anim.visibility = View.INVISIBLE
+                binding.sepetBos.visibility = View.INVISIBLE
+            }
+        }
         return binding.root
     }
 
@@ -53,5 +70,35 @@ class SepetFragment : BottomSheetDialogFragment() {
     override fun onResume() {
         super.onResume()
         viewModel.sepettekiYemekleriYukle("mursel")
+    }
+
+    fun sepetOnayla() {
+        val sepetonay = SepetOnayFragment()
+        sepetonay.show(childFragmentManager, "a")
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = BottomSheetDialog(requireContext(), theme)
+        dialog.setOnShowListener {
+            val bottomSheetDialog = it as BottomSheetDialog
+            val parentLayout =
+                bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+            parentLayout?.let { it ->
+                val behaviour = BottomSheetBehavior.from(it)
+                setupFullHeight(it)
+                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+        }
+        return dialog
+    }
+
+    private fun setupFullHeight(bottomSheet: View) {
+        activity?.displayMetrics()?.run {
+            val height = heightPixels * 0.9
+            val layoutParams = bottomSheet.layoutParams
+            layoutParams.height = height.toInt()
+            bottomSheet.layoutParams = layoutParams
+        }
+
     }
 }

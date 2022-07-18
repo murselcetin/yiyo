@@ -7,8 +7,9 @@ import com.example.yiyo.retrofit.YemeklerDao
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class YemeklerDaoRepository(var ydao: YemeklerDao) {
+class YemeklerDaoRepository  @Inject constructor(var ydao: YemeklerDao) {
     var yemeklerListesi: MutableLiveData<List<Yemekler>>
     var sepetYemekListesi: MutableLiveData<List<SepetYemekler>>
 

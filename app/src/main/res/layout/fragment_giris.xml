@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="girisFragment"
+            type="com.example.yiyo.ui.fragment.viewpager.GirisFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/anaRenkGri2"
+        tools:context=".ui.fragment.viewpager.GirisFragment">
+
+        <TextView
+            android:id="@+id/textViewLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/gluten"
+            android:text="@string/app_name"
+            android:textColor="@color/anaRenkSari"
+            android:textSize="40dp"
+            app:layout_constraintBottom_toTopOf="@id/editTextKullaniciAdi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextKullaniciAdi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="30dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewLogo">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/kullaniciAdi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/anaRenkSari"
+                android:hint="Kullanıcı Adı"
+                android:shadowColor="@color/anaRenkSari"
+                android:textColor="@color/anaRenkGri"
+                android:textColorHint="@color/anaRenkSari" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextSifre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextKullaniciAdi"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@android:color/transparent"
+            app:passwordToggleTintMode="screen">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sifre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/anaRenkSari"
+                android:hint="Şifre"
+                android:textColor="@color/anaRenkGri" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/buttonGirisYap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/anaRenkGri"
+            android:onClick="@{()-> girisFragment.loginKontrol()}"
+            android:text="GİRİŞ YAP"
+            android:textColor="@color/anaRenkSari"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextSifre" />
+
+        <Button
+            android:id="@+id/buttonUyeOl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/anaRenkGri"
+            android:onClick="@{()-> girisFragment.kayıtGecis()}"
+            android:text="ÜYE OL"
+            android:textColor="@color/anaRenkSari"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonGirisYap" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -3,6 +3,7 @@ package com.example.yiyo.ui.viewmodel
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.yiyo.data.entity.FavoriYemek
 import com.example.yiyo.data.entity.SepetYemekler
 import com.example.yiyo.data.entity.Yemekler
 import com.example.yiyo.data.repo.FavorilerDaoRepository
@@ -15,6 +16,7 @@ class YemekDetayFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepo
     var yemekAdi: String = ""
     var yemekSiparisId:Int = 0
     var sepettekiYemekListesi = MutableLiveData<List<SepetYemekler>>()
+    val sepetSayi = MutableLiveData<Int>()
 
     init {
         sepettekiYemekleriYukle("mursel")
@@ -29,7 +31,7 @@ class YemekDetayFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepo
         yemekAdetGetir { itAdet ->
             siparisIdGetir{itId ->
                 oncekiSiparisSil(itId,kullanici_adi)
-                yrepo.siparisKayit(yemek_adi, yemek_resim_adi, yemek_fiyat, itAdet+yemek_siparis_adet,kullanici_adi)
+                yrepo.siparisKayit(yemek_adi, yemek_resim_adi, yemek_fiyat, yemek_siparis_adet,kullanici_adi)
             }
         }
     }
@@ -38,14 +40,10 @@ class YemekDetayFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepo
         frepo.favoriEkle(favoriYemekResim,favoriYemekAdi,favoriYemekFiyat)
     }
 
-    fun favoriKontrol(favoriYemekAdi: String) : Int{
-        return frepo.favoriAra(favoriYemekAdi)
-    }
-
-
     fun yemekAdetGetir(sepetYemekAdet: (result: Int) -> Unit){
         val liste = sepettekiYemekListesi.value
-        val yemekAdet = liste?.filter { it.yemek_adi.contains(yemekAdi) }?.getOrNull(0)?.yemek_siparis_adet?:0
+        val yemekAdet = liste?.filter { it.yemek_adi.contentEquals(yemekAdi) }?.getOrNull(0)?.yemek_siparis_adet?:0
+        sepetSayi.value = yemekAdet
         sepetYemekAdet.invoke(yemekAdet)
     }
 
@@ -61,7 +59,7 @@ class YemekDetayFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepo
 
     fun siparisYemekAdiGetir(sepetYemekAdi: (result: String) -> Unit){
         val liste = sepettekiYemekListesi.value
-        val yemekAdi = liste?.filter { it.yemek_adi.contains(yemekAdi) }?.getOrNull(0)?.yemek_adi?:""
+        val yemekAdi = liste?.filter { it.yemek_adi == yemekAdi }?.getOrNull(0)?.yemek_adi?:""
         sepetYemekAdi.invoke(yemekAdi)
     }
 }
