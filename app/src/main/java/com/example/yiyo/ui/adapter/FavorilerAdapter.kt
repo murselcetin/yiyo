@@ -48,10 +48,11 @@ class FavorilerAdapter(var mContext: Context, var favoriListesi: List<FavoriYeme
 
     fun FavoriYemek.toYemekler() = Yemekler(
         yemek_id = 0,
-        yemek_adi = "$yemek_adi",
-        yemek_resim_adi = "$yemek_resim_adi",
+        yemek_adi = yemek_adi,
+        yemek_resim_adi = yemek_resim_adi,
         yemek_fiyat = yemek_fiyat
     )
+
     override fun getItemCount(): Int {
         return favoriListesi.size
     }

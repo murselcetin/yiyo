@@ -85,7 +85,6 @@
             android:layout_marginTop="50dp"
             android:layout_marginEnd="30dp"
             android:backgroundTint="@color/anaRenkGri"
-            android:onClick="@{()-> girisFragment.loginKontrol()}"
             android:text="GİRİŞ YAP"
             android:textColor="@color/anaRenkSari"
             app:layout_constraintEnd_toEndOf="parent"

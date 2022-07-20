@@ -61,6 +61,7 @@ class AnasayfaFragment : Fragment() {
         }
         return binding.root
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel: AnasayfaFragmentViewModel by viewModels()
@@ -70,17 +71,17 @@ class AnasayfaFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true)
-            {
+            object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     val builder = AlertDialog.Builder(context)
-                    val alertTasarim = LayoutInflater.from(context).inflate(R.layout.sepetten_sil_alert, null)
+                    val alertTasarim =
+                        LayoutInflater.from(context).inflate(R.layout.sepetten_sil_alert, null)
                     val text = alertTasarim.findViewById(R.id.textViewAlertMesaj) as TextView
                     val evetButton = alertTasarim.findViewById(R.id.buttonEvet) as Button
                     val hayirButton = alertTasarim.findViewById(R.id.buttonHayir) as Button
-                    text.text="Uygulamadan çıkmak istiyor musunuz?"
+                    text.text = "Uygulamadan çıkmak istiyor musunuz?"
                     builder.setView(alertTasarim)
-                    val d= builder.create()
+                    val d = builder.create()
                     evetButton.setOnClickListener {
                         activity?.finish()
                         d.dismiss()

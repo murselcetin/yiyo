@@ -9,10 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.yiyo.R
+import com.example.yiyo.util.MySharedPreferences
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class AcilisFragment : Fragment() {
 
+    @Inject
+    lateinit var prefs : MySharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,7 +38,6 @@ class AcilisFragment : Fragment() {
     }
 
     fun onBoardingFinished(): Boolean{
-        val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
-        return sharedPref.getBoolean("Finished",false)
+        return prefs.viewPagerKontrol
     }
 }

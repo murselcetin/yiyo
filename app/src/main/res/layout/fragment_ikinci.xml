@@ -32,14 +32,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageViewIleri"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="55dp"
-        android:src="@drawable/ileri_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

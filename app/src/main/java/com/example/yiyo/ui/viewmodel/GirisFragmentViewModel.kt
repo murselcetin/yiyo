@@ -23,5 +23,4 @@ class GirisFragmentViewModel @Inject constructor(var krepo: KullaniciDaoReposito
             kullaniciListesi.value =  krepo.kullaniciAl(kullanici)
         }
     }
-
 }

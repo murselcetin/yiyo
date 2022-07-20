@@ -12,7 +12,6 @@ class SepetFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepositor
     var sepettekiYemekListesi = MutableLiveData<List<SepetYemekler>>()
 
     init {
-        sepettekiYemekleriYukle("mursel")
         sepettekiYemekListesi = yrepo.SepettekiYemekleriGetir()
     }
 
@@ -20,7 +19,23 @@ class SepetFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepositor
         yrepo.sepettekiYemekleriAl(kullanici_adi)
     }
 
-    fun sepettekiYemekSil(sepet_yemek_id: Int, kullanici_adi: String){
+    fun getYemekTutar(): Double {
+        var price = 0.00
+        sepettekiYemekListesi.value?.forEach {
+            price += (it.yemek_fiyat * it.yemek_siparis_adet).toDouble()
+        }
+        return price
+    }
+
+    fun getYemekIdList(): ArrayList<Int> {
+        val list  = ArrayList<Int>()
+         sepettekiYemekListesi.value?.forEach {
+           list.add(it.sepet_yemek_id)
+        }
+        return list
+    }
+
+    fun sepettekiYemekSil(sepet_yemek_id: Int, kullanici_adi: String) {
         yrepo.sepettekiYemekSil(sepet_yemek_id, kullanici_adi)
     }
 }

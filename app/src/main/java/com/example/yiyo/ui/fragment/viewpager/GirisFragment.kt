@@ -19,12 +19,17 @@ import com.example.yiyo.R
 import com.example.yiyo.data.entity.Kullanici
 import com.example.yiyo.databinding.FragmentGirisBinding
 import com.example.yiyo.ui.viewmodel.GirisFragmentViewModel
+import com.example.yiyo.util.MySharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Exception
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class GirisFragment : Fragment() {
     private lateinit var binding: FragmentGirisBinding
     private lateinit var viewModel: GirisFragmentViewModel
+    @Inject
+    lateinit var prefs : MySharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,11 +48,21 @@ class GirisFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(giris())
+
+        binding.buttonGirisYap.setOnClickListener {
+            loginKontrol()
+        }
+
+        binding.buttonUyeOl.setOnClickListener {
+            kayıtGecis()
+        }
+
+        if(!giris())
         {
             val action = GirisFragmentDirections.actionGirisFragmentToAnasayfaFragment()
             findNavController().navigate(action)
         }else{
+            loginKontrol()
             viewModel.kullaniciListesi.observe(viewLifecycleOwner) {
                 it.getOrNull(0)?.let {
                     girisYapildi()
@@ -61,8 +76,13 @@ class GirisFragment : Fragment() {
     }
 
     fun kayıtGecis(){
-        val action = GirisFragmentDirections.actionGirisFragmentToKayitFragment2()
-        findNavController().navigate(action)
+        try {
+            val action = GirisFragmentDirections.girisToKayit()
+            findNavController().navigate(action)
+        }catch (e:Exception){
+            Log.e("hata",e.message.toString())
+        }
+
     }
 
     fun loginKontrol() {
@@ -70,23 +90,21 @@ class GirisFragment : Fragment() {
         val password = binding.sifre.text.toString().trim()
         if (!username.isNullOrEmpty() && !password.isNullOrEmpty()) {
             viewModel.kullaniciKontrol(Kullanici(kullanici_adi = username, sifre = password))
+        }else {
+            prefs.kullaniciAdi?.let {
+                val action = GirisFragmentDirections.actionGirisFragmentToAnasayfaFragment()
+                findNavController().navigate(action)
+            }
         }
     }
 
     fun giris(): Boolean{
-        val sharedPref = requireActivity().getSharedPreferences("giris", Context.MODE_PRIVATE)
-        return sharedPref.getBoolean("giris",false)
+        return prefs.girisKontrol
     }
 
     fun girisYapildi(){
-        val aktifKullaniciAdi = requireActivity().getSharedPreferences("kullaniciadi", Context.MODE_PRIVATE)
-        val sharedPref = requireActivity().getSharedPreferences("giris", Context.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        val kEditor = aktifKullaniciAdi.edit()
-        editor.putBoolean("giris",true)
-        kEditor.putString("kullaniciadi",binding.kullaniciAdi.text.toString())
-        editor.apply()
-        kEditor.apply()
+        prefs.girisKontrol= true
+        prefs.kullaniciAdi = binding.kullaniciAdi.text.toString()
     }
 
     override fun onAttach(context: Context) {

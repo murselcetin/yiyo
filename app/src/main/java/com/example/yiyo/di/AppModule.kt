@@ -1,6 +1,7 @@
 package com.example.yiyo.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.yiyo.data.repo.FavorilerDaoRepository
@@ -50,5 +51,9 @@ class AppModule {
     @Singleton
     fun provideKullaniciDao(db:RoomVeritabani) = db.kullaniciGetir()
 
-
+    @Provides
+    @Singleton
+    fun mySharedPreferences(@ApplicationContext app: Context): SharedPreferences {
+        return app.getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
+    }
 }

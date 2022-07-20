@@ -9,8 +9,8 @@ import com.example.yiyo.data.entity.Kullanici
 
 @Dao
 interface FavorilerDao {
-    @Query("SELECT * FROM favoriler")
-    suspend fun tumFavoriler(): List<FavoriYemek>
+    @Query("SELECT * FROM favoriler WHERE kullanici_adi = :kullaniciAdi")
+    suspend fun tumFavoriler(kullaniciAdi: String): List<FavoriYemek>
 
     @Insert
     suspend fun favoriEkle(favoriYemek: FavoriYemek)
@@ -18,6 +18,9 @@ interface FavorilerDao {
     @Delete
     suspend fun favoriSil(favoriYemek: FavoriYemek)
 
-    @Query("SELECT * FROM favoriler WHERE yemek_adi = :favoriYemekAdi LIMIT 1")
-    suspend fun favoriArama(favoriYemekAdi: String): List<FavoriYemek>
+    @Query("SELECT * FROM favoriler WHERE yemek_adi = :favoriYemekAdi AND kullanici_adi = :kullaniciAdi LIMIT 1")
+    suspend fun favoriArama(favoriYemekAdi: String, kullaniciAdi: String): List<FavoriYemek>
+
+    @Query("SELECT * FROM favoriler WHERE yemek_adi = :favoriYemekAdi AND kullanici_adi = :kullaniciAdi LIMIT 1")
+    suspend fun favoriId(favoriYemekAdi: String, kullaniciAdi: String): FavoriYemek
 }
