@@ -20,6 +20,7 @@ import com.example.yiyo.data.entity.Kullanici
 import com.example.yiyo.databinding.FragmentGirisBinding
 import com.example.yiyo.ui.viewmodel.GirisFragmentViewModel
 import com.example.yiyo.util.MySharedPreferences
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Exception
 import javax.inject.Inject
@@ -69,7 +70,7 @@ class GirisFragment : Fragment() {
                     val action = GirisFragmentDirections.actionGirisFragmentToAnasayfaFragment()
                     findNavController().navigate(action)
                 } ?: run {
-                    Toast.makeText(requireContext(), "GİRİŞ YAPILAMADI", Toast.LENGTH_SHORT).show()
+                    Snackbar.make(binding.buttonGirisYap, "GİRİŞ YAPILAMADI", Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -27,7 +27,6 @@ import javax.inject.Inject
 class SepetFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentSepetBinding
     private lateinit var viewModel: SepetFragmentViewModel
-
     @Inject
     lateinit var prefs: MySharedPreferences
     override fun onCreateView(

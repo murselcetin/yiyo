@@ -12,7 +12,6 @@ class SepetOnayFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepos
 
     var sepetIdList = ArrayList<Int>()
 
-
     fun tumYemekleriSil(){
         sepetIdList.forEach {
             yrepo.sepettekiYemekSil(it, prefs.kullaniciAdi?:"")

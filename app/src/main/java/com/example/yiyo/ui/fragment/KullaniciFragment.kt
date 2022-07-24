@@ -38,7 +38,6 @@ class KullaniciFragment : BottomSheetDialogFragment() {
     ): View? {
         binding = FragmentKullaniciBinding.inflate(layoutInflater, container, false)
 
-
         binding.cardViewCikis.setOnClickListener {
             val builder = context?.let { it1 -> AlertDialog.Builder(it1) }
             val alertTasarim =
