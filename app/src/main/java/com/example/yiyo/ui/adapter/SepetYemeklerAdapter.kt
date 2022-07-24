@@ -14,8 +14,7 @@ import com.example.yiyo.ui.viewmodel.SepetFragmentViewModel
 import com.example.yiyo.util.resimYukle
 
 
-class SepetYemeklerAdapter(var mContext: Context, var sepettekiYemekListesi: List<SepetYemekler>, var viewModel: SepetFragmentViewModel
-) : RecyclerView.Adapter<SepetYemeklerAdapter.TasarimTutucu>() {
+class SepetYemeklerAdapter(var mContext: Context, var sepettekiYemekListesi: List<SepetYemekler>, var viewModel: SepetFragmentViewModel,var kullaniciAdi:String) : RecyclerView.Adapter<SepetYemeklerAdapter.TasarimTutucu>() {
     inner class TasarimTutucu(binding: SepetYemekRecyclerviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         var binding: SepetYemekRecyclerviewBinding
@@ -24,7 +23,6 @@ class SepetYemeklerAdapter(var mContext: Context, var sepettekiYemekListesi: Lis
             this.binding = binding
         }
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasarimTutucu {
         val layoutInflater = LayoutInflater.from(mContext)
@@ -50,7 +48,7 @@ class SepetYemeklerAdapter(var mContext: Context, var sepettekiYemekListesi: Lis
             val d= builder.create()
             evetButton.setOnClickListener {
                 viewModel.sepettekiYemekSil(sepettekiYemek.sepet_yemek_id, sepettekiYemek.kullanici_adi)
-                viewModel.sepettekiYemekleriYukle("mursel")
+                viewModel.sepettekiYemekleriYukle(kullaniciAdi)
                 d.dismiss()
             }
             hayirButton.setOnClickListener {

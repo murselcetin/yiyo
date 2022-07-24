@@ -3,12 +3,15 @@ package com.example.yiyo.ui.viewmodel
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.yiyo.data.entity.FavoriYemek
 import com.example.yiyo.data.entity.SepetYemekler
 import com.example.yiyo.data.entity.Yemekler
 import com.example.yiyo.data.repo.FavorilerDaoRepository
 import com.example.yiyo.data.repo.YemeklerDaoRepository
+import com.example.yiyo.util.MySharedPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,14 +20,11 @@ class YemekDetayFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepo
     var yemekSiparisId:Int = 0
     var sepettekiYemekListesi = MutableLiveData<List<SepetYemekler>>()
     val sepetSayi = MutableLiveData<Int>()
+    val favoriKontrol = MutableLiveData<Boolean>()
+    val favoriId = MutableLiveData<Int>()
 
     init {
-        sepettekiYemekleriYukle("mursel")
         sepettekiYemekListesi = yrepo.SepettekiYemekleriGetir()
-    }
-
-    fun sepettekiYemekleriYukle(kullanici_adi: String) {
-        yrepo.sepettekiYemekleriAl(kullanici_adi)
     }
 
     fun sepeteEkle(yemek_adi: String, yemek_resim_adi: String, yemek_fiyat: Int, yemek_siparis_adet: Int, kullanici_adi:String) {
@@ -38,6 +38,22 @@ class YemekDetayFragmentViewModel @Inject constructor(var yrepo: YemeklerDaoRepo
 
     fun favoriKayit(favoriYemekResim: String, favoriYemekAdi: String, favoriYemekFiyat: Int) {
         frepo.favoriEkle(favoriYemekResim,favoriYemekAdi,favoriYemekFiyat)
+    }
+
+    fun favoriSil(favoriId:Int,favoriYemekResim: String, favoriYemekAdi: String, favoriYemekFiyat: Int) {
+        frepo.favoriSil(favoriId,favoriYemekResim,favoriYemekAdi,favoriYemekFiyat)
+    }
+
+    fun favoriKontrol(favoriYemekAdi: String){
+        viewModelScope.launch {
+            favoriKontrol.value = frepo.favoriArama(favoriYemekAdi).size > 0
+        }
+    }
+
+    fun favoriId(favoriYemekAdi: String){
+        viewModelScope.launch {
+            favoriId.value = frepo.favoriId(favoriYemekAdi).favori_id
+        }
     }
 
     fun yemekAdetGetir(sepetYemekAdet: (result: Int) -> Unit){

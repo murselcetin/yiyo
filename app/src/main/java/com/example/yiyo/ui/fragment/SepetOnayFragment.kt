@@ -1,16 +1,24 @@
 package com.example.yiyo.ui.fragment
 
 import android.app.Dialog
-import androidx.fragment.app.Fragment
 
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.yiyo.R
 import com.example.yiyo.databinding.FragmentSepetOnayBinding
+import com.example.yiyo.ui.adapter.SepetYemeklerAdapter
+import com.example.yiyo.ui.viewmodel.SepetFragmentViewModel
+import com.example.yiyo.ui.viewmodel.SepetOnayFragmentViewModel
+import com.example.yiyo.util.MySharedPreferences
+import com.example.yiyo.util.convert
 import com.example.yiyo.util.displayMetrics
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -22,25 +30,51 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SepetOnayFragment : BottomSheetDialogFragment(), OnMapReadyCallback {
 
+    private lateinit var viewModel: SepetOnayFragmentViewModel
     private lateinit var mMap: GoogleMap
     private lateinit var binding: FragmentSepetOnayBinding
+    @Inject
+    lateinit var prefs: MySharedPreferences
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSepetOnayBinding.inflate(inflater,container,false)
+        binding = FragmentSepetOnayBinding.inflate(inflater, container, false)
 
-        binding.buttonOnay.setOnClickListener{
+        val tutar = arguments?.getDouble("tutar")
+        val sepetIdList = arguments?.getIntegerArrayList("yemekid")
+        sepetIdList?.let {
+          viewModel.sepetIdList = it
+        }
+
+        tutar?.let {
+            binding.textViewTutar.text = tutar.convert()
+            binding.textViewOdenecekTutar.text =tutar.convert()
+        }
+
+
+        binding.buttonOnay.setOnClickListener {
             val builder = context?.let { it1 -> AlertDialog.Builder(it1) }
-            val alertTasarim = LayoutInflater.from(context).inflate(R.layout.siparis_tamamlandi_alert, null)
+            val alertTasarim =
+                LayoutInflater.from(context).inflate(R.layout.siparis_tamamlandi_alert, null)
             builder?.setView(alertTasarim)
-            val d= builder?.create()
+            val d = builder?.create()
             d?.show()
+            viewModel.tumYemekleriSil()
+            Handler().postDelayed({
+                d?.dismiss()
+            }, 1500)
+
         }
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,11 +82,17 @@ class SepetOnayFragment : BottomSheetDialogFragment(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: SepetOnayFragmentViewModel by viewModels()
+        viewModel = tempViewModel
+    }
+
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val sydney = LatLng(37.00, 31.00)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Konum"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val konum = LatLng(37.00, 31.00)
+        mMap.addMarker(MarkerOptions().position(konum).title("Konum"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(konum))
         mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
     }
 

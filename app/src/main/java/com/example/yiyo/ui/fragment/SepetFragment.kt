@@ -8,31 +8,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.RecyclerView
 import com.example.yiyo.R
 import com.example.yiyo.databinding.FragmentSepetBinding
 import com.example.yiyo.ui.adapter.SepetYemeklerAdapter
 import com.example.yiyo.ui.viewmodel.SepetFragmentViewModel
+import com.example.yiyo.util.MySharedPreferences
 import com.example.yiyo.util.displayMetrics
-import com.example.yiyo.util.gecisYap
-import com.google.android.material.bottomappbar.BottomAppBarTopEdgeTreatment
+
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SepetFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentSepetBinding
     private lateinit var viewModel: SepetFragmentViewModel
+    @Inject
+    lateinit var prefs: MySharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,7 +37,8 @@ class SepetFragment : BottomSheetDialogFragment() {
         binding.sepetFragment = this
 
         viewModel.sepettekiYemekListesi.observe(viewLifecycleOwner) {
-            val adapter = SepetYemeklerAdapter(requireContext(), it, viewModel)
+            val adapter =
+                SepetYemeklerAdapter(requireContext(), it, viewModel, prefs.kullaniciAdi ?: "")
             Log.e("AdapterSayi", it.toString())
             binding.sepetYemeklerAdapter = adapter
         }
@@ -51,7 +48,7 @@ class SepetFragment : BottomSheetDialogFragment() {
                 binding.sepetOnay.visibility = View.GONE
                 binding.anim.visibility = View.VISIBLE
                 binding.sepetBos.visibility = View.VISIBLE
-            }else{
+            } else {
                 binding.rv.visibility = View.VISIBLE
                 binding.sepetOnay.visibility = View.VISIBLE
                 binding.anim.visibility = View.INVISIBLE
@@ -69,12 +66,16 @@ class SepetFragment : BottomSheetDialogFragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.sepettekiYemekleriYukle("mursel")
+        viewModel.sepettekiYemekleriYukle(prefs.kullaniciAdi ?: "")
     }
 
     fun sepetOnayla() {
         val sepetonay = SepetOnayFragment()
-        sepetonay.show(childFragmentManager, "a")
+        val bundle = Bundle()
+        bundle.putDouble("tutar", viewModel.getYemekTutar())
+        bundle.putIntegerArrayList("yemekid", viewModel.getYemekIdList())
+        sepetonay.arguments = bundle
+        sepetonay.show(childFragmentManager, "sepetData")
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

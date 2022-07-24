@@ -1,5 +1,6 @@
 package com.example.yiyo.ui.fragment
 
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,29 +18,25 @@ import com.example.yiyo.R
 import com.example.yiyo.databinding.FragmentFavoriBinding
 import com.example.yiyo.databinding.FragmentKullaniciBinding
 import com.example.yiyo.ui.viewmodel.FavoriFragmentViewModel
+import com.example.yiyo.util.MySharedPreferences
+import com.example.yiyo.util.displayMetrics
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class KullaniciFragment : Fragment() {
+class KullaniciFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentKullaniciBinding
+    @Inject
+    lateinit var prefs : MySharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentKullaniciBinding.inflate(layoutInflater, container, false)
-
-        val navHostFragment =
-            activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        NavigationUI.setupWithNavController(binding.bottomNavBar, navHostFragment.navController)
-
-        binding.bottomNavBar.background = null
-        binding.bottomNavBar.menu.getItem(1).isEnabled = false
-
-        binding.fab.setOnClickListener {
-            val modalBottomSheet = SepetFragment()
-            modalBottomSheet.show(requireActivity().supportFragmentManager, "ModalBottomSheet")
-        }
 
         binding.cardViewCikis.setOnClickListener {
             val builder = context?.let { it1 -> AlertDialog.Builder(it1) }
@@ -52,9 +49,9 @@ class KullaniciFragment : Fragment() {
             builder?.setView(alertTasarim)
             val d = builder?.create()
             evetButton.setOnClickListener {
-                cikisYapildi()
                 val action = KullaniciFragmentDirections.actionKullaniciFragmentToGirisFragment()
                 findNavController().navigate(action)
+                cikisYapildi()
                 d?.dismiss()
             }
             hayirButton.setOnClickListener {
@@ -65,10 +62,38 @@ class KullaniciFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.textViewKullaniciAdi.text = prefs.kullaniciAdi
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     fun cikisYapildi() {
-        val sharedPref = requireActivity().getSharedPreferences("giris", Context.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        editor.putBoolean("giris", false)
-        editor.apply()
+        prefs.girisKontrol = true
+        prefs.kullaniciAdi = null
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = BottomSheetDialog(requireContext(), theme)
+        dialog.setOnShowListener {
+
+            val bottomSheetDialog = it as BottomSheetDialog
+            val parentLayout =
+                bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+            parentLayout?.let { it ->
+                val behaviour = BottomSheetBehavior.from(it)
+                setupFullHeight(it)
+                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+        }
+        return dialog
+    }
+
+    private fun setupFullHeight(bottomSheet: View) {
+        activity?.displayMetrics()?.run {
+            val height = heightPixels*0.9
+            val layoutParams = bottomSheet.layoutParams
+            layoutParams.height = height.toInt()
+            bottomSheet.layoutParams = layoutParams
+        }
     }
 }

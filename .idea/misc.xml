@@ -9,6 +9,7 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/cardview.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/cikis_icon.xml" value="0.244" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/favori_bos.xml" value="0.29" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/favori_dolu.xml" value="0.244" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/favori_icon.xml" value="0.1665" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/kartlar_icon.xml" value="0.244" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/drawable/kullanici_icon.xml" value="0.2385" />
@@ -37,6 +38,7 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/layout/yemek_recyclerview.xml" value="0.7192028985507246" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/menu/toolbar_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/yiyo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.196" />
       </map>
     </option>
   </component>

@@ -7,9 +7,12 @@ import android.widget.ImageView
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import com.squareup.picasso.Picasso
+import java.text.DecimalFormat
 
-fun Navigation.gecisYap(v: View, id: Int) {
-    findNavController(v).navigate(id)
+fun Double.convert(): String {
+    val format = DecimalFormat("#,###.00")
+    format.isDecimalSeparatorAlwaysShown = false
+    return format.format(this).toString().plus(" ₺")
 }
 
 fun Navigation.gecisYap(v: View, id: NavDirections) {

@@ -20,9 +20,6 @@ class BirinciFragment : Fragment() {
 
         val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager)
 
-        binding.imageViewIleri.setOnClickListener{
-            viewPager?.currentItem = 1
-        }
         return binding.root
     }
 

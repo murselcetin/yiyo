@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragment.SepetFragment"
-        android:background="@color/anaRenkGri2">
+        android:background="@color/anaRenkBeyaz">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="SEPETİNİZDE YİYECEK BULUNMAMAKTADIR."
-            android:textColor="@color/white"
+            android:textColor="@color/anaRenkGri"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

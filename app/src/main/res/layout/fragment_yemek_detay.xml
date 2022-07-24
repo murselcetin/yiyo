@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/anaRenkGri2"
+        android:background="@color/anaRenkBeyaz"
         tools:context=".ui.fragment.YemekDetayFragment">
 
 
@@ -33,6 +33,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/favoriImage"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
@@ -68,7 +69,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/kdam"
             android:text="4.8"
-            android:textColor="@color/anaRenkBeyaz"
+            android:textColor="@color/anaRenkGri"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/imageViewYildiz"
             app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
@@ -92,7 +93,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/kdam"
             android:text="500 kcal"
-            android:textColor="@color/anaRenkBeyaz"
+            android:textColor="@color/anaRenkGri"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/imageViewKalori"
             app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
@@ -116,7 +117,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/kdam"
             android:text="20-30 dk."
-            android:textColor="@color/anaRenkBeyaz"
+            android:textColor="@color/anaRenkGri"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/imageViewSure"
             app:layout_constraintTop_toBottomOf="@id/sepeteEkle" />
@@ -128,7 +129,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/kdam"
             android:text="@{gelenYemek.yemek_adi}"
-            android:textColor="@color/anaRenkBeyaz"
+            android:textColor="@color/anaRenkGri"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -211,7 +212,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="YİYO farkıyla eşsiz lezzet!"
-            android:textColor="@color/anaRenkBeyaz"
+            android:textColor="@color/anaRenkGri"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -227,7 +228,7 @@
             android:layout_marginEnd="20dp"
             android:text="İçindekiler: Köfte, patates kızartması, ızgara domates ve biber "
             android:textAlignment="center"
-            android:textColor="@color/anaRenkBeyaz"
+            android:textColor="@color/anaRenkGri2"
             android:textSize="14sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"

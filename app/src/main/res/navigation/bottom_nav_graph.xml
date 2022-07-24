@@ -44,7 +44,7 @@
             android:id="@+id/action_girisFragment_to_anasayfaFragment"
             app:destination="@id/anasayfaFragment" />
         <action
-            android:id="@+id/action_girisFragment_to_kayitFragment2"
+            android:id="@+id/girisToKayit"
             app:destination="@id/kayitFragment2" />
     </fragment>
     <dialog
@@ -68,7 +68,11 @@
     <dialog
         android:id="@+id/sepetOnayFragment"
         android:name="com.example.yiyo.ui.fragment.SepetOnayFragment"
-        android:label="SepetOnayFragment" />
+        android:label="SepetOnayFragment" >
+        <action
+            android:id="@+id/action_sepetOnayFragment_to_sepetFragment"
+            app:destination="@id/sepetFragment" />
+    </dialog>
     <fragment
         android:id="@+id/acilisFragment2"
         android:name="com.example.yiyo.ui.fragment.AcilisFragment"
@@ -85,7 +89,11 @@
         android:id="@+id/viewPagerFragment2"
         android:name="com.example.yiyo.ui.fragment.ViewPagerFragment"
         android:label="fragment_view_pager"
-        tools:layout="@layout/fragment_view_pager" />
+        tools:layout="@layout/fragment_view_pager" >
+        <action
+            android:id="@+id/action_viewPagerFragment2_to_girisFragment2"
+            app:destination="@id/girisFragment" />
+    </fragment>
     <fragment
         android:id="@+id/kayitFragment2"
         android:name="com.example.yiyo.ui.fragment.KayitFragment"
@@ -94,7 +102,7 @@
             android:id="@+id/action_kayitFragment2_to_girisFragment"
             app:destination="@id/girisFragment" />
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/kullaniciFragment"
         android:name="com.example.yiyo.ui.fragment.KullaniciFragment"
         android:label="fragment_kullanici"
@@ -102,5 +110,5 @@
         <action
             android:id="@+id/action_kullaniciFragment_to_girisFragment"
             app:destination="@id/girisFragment" />
-    </fragment>
+    </dialog>
 </navigation>

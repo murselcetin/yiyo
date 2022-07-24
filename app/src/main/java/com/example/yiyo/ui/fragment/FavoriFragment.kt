@@ -19,6 +19,7 @@ import com.example.yiyo.databinding.FragmentAnasayfaBinding
 import com.example.yiyo.databinding.FragmentFavoriBinding
 import com.example.yiyo.ui.adapter.FavorilerAdapter
 import com.example.yiyo.ui.adapter.YemeklerAdapter
+import com.example.yiyo.ui.fragment.YemekDetayFragment.Companion.IS_FAVORITE_STATE_CHANGE
 import com.example.yiyo.ui.viewmodel.AnasayfaFragmentViewModel
 import com.example.yiyo.ui.viewmodel.FavoriFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,10 +35,7 @@ class FavoriFragment : Fragment() {
         binding = FragmentFavoriBinding.inflate(layoutInflater, container, false)
         binding.favoriFragment = this
 
-        viewModel.favorilerListesi.observe(viewLifecycleOwner) {
-            val adapter = FavorilerAdapter(requireContext(), it, viewModel)
-            binding.favoriAdapter = adapter
-        }
+        favoriYukle()
 
         val navHostFragment =
             activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
@@ -59,20 +57,51 @@ class FavoriFragment : Fragment() {
         viewModel = tempViewModel
     }
 
+    override fun onResume() {
+        viewModel.favorilerYukle()
+        super.onResume()
+    }
+
+    private fun isFavoriteStateChange() {
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>(
+            IS_FAVORITE_STATE_CHANGE
+        )?.observe(
+            viewLifecycleOwner
+        ) { isChange ->
+            if (isChange) {
+                viewModel.favorilerYukle()
+            }
+        }
+    }
+
+    fun favoriYukle() {
+        viewModel.favorilerListesi.observe(viewLifecycleOwner) {
+            val adapter = FavorilerAdapter(requireContext(), it, viewModel)
+            binding.favoriAdapter = adapter
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.favorilerYukle()
+        isFavoriteStateChange()
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true)
-            {
+            object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     val builder = AlertDialog.Builder(context)
-                    val alertTasarim = LayoutInflater.from(context).inflate(R.layout.sepetten_sil_alert, null)
+                    val alertTasarim =
+                        LayoutInflater.from(context).inflate(R.layout.sepetten_sil_alert, null)
                     val text = alertTasarim.findViewById(R.id.textViewAlertMesaj) as TextView
                     val evetButton = alertTasarim.findViewById(R.id.buttonEvet) as Button
                     val hayirButton = alertTasarim.findViewById(R.id.buttonHayir) as Button
-                    text.text="Uygulamadan çıkmak istiyor musunuz?"
+                    text.text = "Uygulamadan çıkmak istiyor musunuz?"
                     builder.setView(alertTasarim)
-                    val d= builder.create()
+                    val d = builder.create()
                     evetButton.setOnClickListener {
                         activity?.finish()
                         d.dismiss()

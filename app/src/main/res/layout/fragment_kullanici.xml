@@ -12,59 +12,34 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/anaRenkBeyaz">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="55dp"
             tools:context=".ui.fragment.FavoriFragment">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbarKullanici"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/anaRenkGri"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:titleMarginStart="172.8dp"
-                app:titleTextAppearance="@style/toolbar"
-                app:titleTextColor="@color/anaRenkSari">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/gluten"
-                    android:text="@string/app_name"
-                    android:textColor="@color/anaRenkSari"
-                    android:textSize="28sp" />
-            </androidx.appcompat.widget.Toolbar>
 
             <TextView
                 android:id="@+id/textViewKullaniciAdi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="40dp"
-                android:text="mürsel"
+                android:layout_marginTop="60dp"
                 android:textColor="@color/anaRenkGri"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@id/imageView"
-                app:layout_constraintTop_toBottomOf="@id/toolbarKullanici" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="160dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="60dp"
                 app:layout_constraintEnd_toStartOf="@id/textViewKullaniciAdi"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbarKullanici"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/kullanici_icon" />
 
             <androidx.cardview.widget.CardView
@@ -72,9 +47,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="60dp"
                 android:layout_marginEnd="24dp"
-                android:backgroundTint="@color/anaRenkGri2"
+                android:backgroundTint="@color/anaRenkGri"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +87,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
-                android:backgroundTint="@color/anaRenkGri2"
+                android:backgroundTint="@color/anaRenkGri"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +125,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
-                android:backgroundTint="@color/anaRenkGri2"
+                android:backgroundTint="@color/anaRenkGri"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -188,7 +163,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
-                android:backgroundTint="@color/anaRenkGri2"
+                android:backgroundTint="@color/anaRenkGri"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -226,7 +201,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
-                android:backgroundTint="@color/anaRenkGri2"
+                android:backgroundTint="@color/anaRenkGri"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -264,7 +239,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
-                android:backgroundTint="@color/anaRenkGri2"
+                android:backgroundTint="@color/anaRenkGri"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -295,38 +270,53 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/textViewSosyalMedya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sosyal Medya Hesaplarımız"
+                android:textColor="@color/anaRenkGri"
+                android:textSize="15sp"
+                android:fontFamily="@font/gluten"
+                app:layout_constraintBottom_toTopOf="@id/imageViewIns"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="10dp" />
+
+            <ImageView
+                android:id="@+id/imageViewFace"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                app:srcCompat="@drawable/facebook"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imageViewIns"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="100dp"
+                android:layout_marginBottom="30dp"/>
+
+            <ImageView
+                android:id="@+id/imageViewIns"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                app:srcCompat="@drawable/instagram"
+                app:layout_constraintStart_toEndOf="@id/imageViewFace"
+                app:layout_constraintEnd_toStartOf="@id/imageViewTw"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="30dp"/>
+
+            <ImageView
+                android:id="@+id/imageViewTw"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                app:srcCompat="@drawable/twitter"
+                app:layout_constraintStart_toEndOf="@id/imageViewIns"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="30dp"/>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/appBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:backgroundTint="@color/anaRenkGri"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/anaRenkGri"
-                app:itemIconTint="@color/anaRenkSari"
-                app:labelVisibilityMode="unlabeled"
-                app:menu="@menu/bottom_nav_menu" />
-        </com.google.android.material.bottomappbar.BottomAppBar>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/anaRenkGri"
-            android:clickable="true"
-            app:borderWidth="0dp"
-            app:elevation="2dp"
-            app:layout_anchor="@id/appBar"
-            app:pressedTranslationZ="12dp"
-            app:srcCompat="@drawable/sepet_icon"
-            app:tint="@color/anaRenkSari" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
